@@ -11,11 +11,14 @@ class CampusConnectApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'CampusConnect',
+      title: 'Unhasy Jaya',
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF2563EB)),
-        scaffoldBackgroundColor: const Color(0xFFF5F7FB),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFC2410C),
+          surface: Colors.white,
+        ),
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: const CampusHome(),
     );
@@ -36,8 +39,8 @@ class _CampusHomeState extends State<CampusHome> {
   String selectedDay = 'Semua';
   bool isDarkMode = false;
 
-  final String studentName = 'Ahmad Sholahuddin Putra';
-  final String studentNim = '2495114040';
+  final String studentName = 'Ahmad Badrul Furqon';
+  final String studentNim = '2495114004';
   final String studyProgram = 'Teknik Informatika';
 
   final List<Map<String, String>> schedules = [
@@ -122,9 +125,13 @@ class _CampusHomeState extends State<CampusHome> {
         useMaterial3: true,
         brightness: isDarkMode ? Brightness.dark : Brightness.light,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF2563EB),
+          seedColor: const Color(0xFFC2410C),
           brightness: isDarkMode ? Brightness.dark : Brightness.light,
+          surface: isDarkMode ? null : Colors.white,
         ),
+        scaffoldBackgroundColor: isDarkMode
+            ? const Color(0xFF121212)
+            : Colors.white,
       ),
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -191,7 +198,7 @@ class _CampusHomeState extends State<CampusHome> {
   Widget _buildSidebar() {
     return Container(
       width: 245,
-      color: const Color(0xFF102B55),
+      color: const Color(0xFFC2410C),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -203,7 +210,7 @@ class _CampusHomeState extends State<CampusHome> {
                 SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    'CampusConnect',
+                    'Unhasy Jaya',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 19,
@@ -231,7 +238,7 @@ class _CampusHomeState extends State<CampusHome> {
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
               child: ListTile(
                 selected: selectedIndex == i,
-                selectedTileColor: const Color(0xFF2563EB),
+                selectedTileColor: const Color(0xFF9A3412),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -286,7 +293,7 @@ class _CampusHomeState extends State<CampusHome> {
             const SizedBox(width: 8),
             CircleAvatar(
               backgroundImage: const AssetImage(profilePhotoAsset),
-              backgroundColor: const Color(0xFFDBEAFE),
+              backgroundColor: const Color(0xFFFFEDD5),
             ),
             const SizedBox(width: 10),
             Flexible(child: Text(studentName, overflow: TextOverflow.ellipsis)),
@@ -337,7 +344,7 @@ class _CampusHomeState extends State<CampusHome> {
                   'Mata Kuliah',
                   '${schedules.map((s) => s['course']).toSet().length}',
                   Icons.menu_book,
-                  Colors.blue,
+                  const Color(0xFFC2410C),
                   cardWidth,
                 ),
                 _statCard(
@@ -351,7 +358,7 @@ class _CampusHomeState extends State<CampusHome> {
                   'Data Nilai',
                   '${grades.length} mata kuliah',
                   Icons.grade,
-                  Colors.deepPurple,
+                  const Color(0xFFC2410C),
                   cardWidth,
                 ),
               ],
@@ -460,7 +467,10 @@ class _CampusHomeState extends State<CampusHome> {
         ...filteredSchedules.map(
           (schedule) => Card(
             child: ListTile(
-              leading: const Icon(Icons.calendar_month, color: Colors.blue),
+              leading: const Icon(
+                Icons.calendar_month,
+                color: Color(0xFFC2410C),
+              ),
               title: Text('${schedule['course']} (${schedule['code']})'),
               subtitle: Text(
                 '$studyProgram\n'
@@ -518,7 +528,9 @@ class _CampusHomeState extends State<CampusHome> {
                         child: Text(
                           isPresent ? 'Status: Hadir' : 'Status: Belum Hadir',
                           style: TextStyle(
-                            color: isPresent ? Colors.green : Colors.orange,
+                            color: isPresent
+                                ? Colors.green
+                                : const Color(0xFFC2410C),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -559,7 +571,7 @@ class _CampusHomeState extends State<CampusHome> {
           child: ListTile(
             leading: const Icon(
               Icons.analytics,
-              color: Colors.deepPurple,
+              color: Color(0xFFC2410C),
               size: 35,
             ),
             title: const Text('Rata-rata nilai simulasi'),

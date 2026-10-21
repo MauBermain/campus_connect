@@ -23,7 +23,8 @@ void main() {
     await tester.tap(find.byIcon(Icons.person));
     await tester.pumpAndSettle();
 
-    expect(find.text('Ahmad Sholahuddin Putra'), findsOneWidget);
+    expect(find.text('Ahmad Badrul Furqon'), findsOneWidget);
+    expect(find.text('2495114004'), findsOneWidget);
     expect(
       find.byWidgetPredicate(
         (widget) =>
